@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0A029D19057C5A0013D8AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A029C19057C5A0013D8AF /* Foundation.framework */; };
+		1A0A029F19057C5A0013D8AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A029E19057C5A0013D8AF /* CoreGraphics.framework */; };
+		1A0A02A119057C5A0013D8AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02A019057C5A0013D8AF /* UIKit.framework */; };
+		1A0A02A719057C5A0013D8AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A02A519057C5A0013D8AF /* InfoPlist.strings */; };
+		1A0A02A919057C5A0013D8AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02A819057C5A0013D8AF /* main.m */; };
+		1A0A02AD19057C5A0013D8AF /* JTAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02AC19057C5A0013D8AF /* JTAAppDelegate.m */; };
+		1A0A02B019057C5A0013D8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A02AE19057C5A0013D8AF /* Main.storyboard */; };
+		1A0A02B319057C5A0013D8AF /* JTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02B219057C5A0013D8AF /* JTAViewController.m */; };
+		1A0A02B519057C5A0013D8AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A02B419057C5A0013D8AF /* Images.xcassets */; };
+		1A0A02BC19057C5A0013D8AF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02BB19057C5A0013D8AF /* XCTest.framework */; };
+		1A0A02BD19057C5A0013D8AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A029C19057C5A0013D8AF /* Foundation.framework */; };
+		1A0A02BE19057C5A0013D8AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02A019057C5A0013D8AF /* UIKit.framework */; };
+		1A0A02C619057C5A0013D8AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A02C419057C5A0013D8AF /* InfoPlist.strings */; };
+		1A0A02C819057C5A0013D8AF /* googlePolylineTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02C719057C5A0013D8AF /* googlePolylineTestTests.m */; };
+		1A0A02D219057CFF0013D8AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02D119057CFF0013D8AF /* CoreLocation.framework */; };
+		1A0A02D419057D6C0013D8AF /* polylineFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02D319057D6C0013D8AF /* polylineFunctions.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A0A02BF19057C5A0013D8AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A0A029119057C5A0013D8AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A0A029819057C5A0013D8AF;
+			remoteInfo = googlePolylineTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A0A029919057C5A0013D8AF /* googlePolylineTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googlePolylineTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0A029C19057C5A0013D8AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1A0A029E19057C5A0013D8AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1A0A02A019057C5A0013D8AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1A0A02A419057C5A0013D8AF /* googlePolylineTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "googlePolylineTest-Info.plist"; sourceTree = "<group>"; };
+		1A0A02A619057C5A0013D8AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1A0A02A819057C5A0013D8AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1A0A02AA19057C5A0013D8AF /* googlePolylineTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "googlePolylineTest-Prefix.pch"; sourceTree = "<group>"; };
+		1A0A02AB19057C5A0013D8AF /* JTAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTAAppDelegate.h; sourceTree = "<group>"; };
+		1A0A02AC19057C5A0013D8AF /* JTAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTAAppDelegate.m; sourceTree = "<group>"; };
+		1A0A02AF19057C5A0013D8AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1A0A02B119057C5A0013D8AF /* JTAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTAViewController.h; sourceTree = "<group>"; };
+		1A0A02B219057C5A0013D8AF /* JTAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTAViewController.m; sourceTree = "<group>"; };
+		1A0A02B419057C5A0013D8AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1A0A02BA19057C5A0013D8AF /* googlePolylineTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = googlePolylineTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0A02BB19057C5A0013D8AF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1A0A02C319057C5A0013D8AF /* googlePolylineTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "googlePolylineTestTests-Info.plist"; sourceTree = "<group>"; };
+		1A0A02C519057C5A0013D8AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1A0A02C719057C5A0013D8AF /* googlePolylineTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = googlePolylineTestTests.m; sourceTree = "<group>"; };
+		1A0A02D119057CFF0013D8AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1A0A02D319057D6C0013D8AF /* polylineFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polylineFunctions.c; sourceTree = "<group>"; };
+		1AAAC10B190702DE00F36316 /* polylineFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = polylineFunctions.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0A029619057C5A0013D8AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02D219057CFF0013D8AF /* CoreLocation.framework in Frameworks */,
+				1A0A029F19057C5A0013D8AF /* CoreGraphics.framework in Frameworks */,
+				1A0A02A119057C5A0013D8AF /* UIKit.framework in Frameworks */,
+				1A0A029D19057C5A0013D8AF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0A02B719057C5A0013D8AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02BC19057C5A0013D8AF /* XCTest.framework in Frameworks */,
+				1A0A02BE19057C5A0013D8AF /* UIKit.framework in Frameworks */,
+				1A0A02BD19057C5A0013D8AF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0A029019057C5A0013D8AF = {
+			isa = PBXGroup;
+			children = (
+				1A0A02A219057C5A0013D8AF /* googlePolylineTest */,
+				1A0A02C119057C5A0013D8AF /* googlePolylineTestTests */,
+				1A0A029B19057C5A0013D8AF /* Frameworks */,
+				1A0A029A19057C5A0013D8AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0A029A19057C5A0013D8AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A029919057C5A0013D8AF /* googlePolylineTest.app */,
+				1A0A02BA19057C5A0013D8AF /* googlePolylineTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A0A029B19057C5A0013D8AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A02D119057CFF0013D8AF /* CoreLocation.framework */,
+				1A0A029C19057C5A0013D8AF /* Foundation.framework */,
+				1A0A029E19057C5A0013D8AF /* CoreGraphics.framework */,
+				1A0A02A019057C5A0013D8AF /* UIKit.framework */,
+				1A0A02BB19057C5A0013D8AF /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A0A02A219057C5A0013D8AF /* googlePolylineTest */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A02AB19057C5A0013D8AF /* JTAAppDelegate.h */,
+				1A0A02AC19057C5A0013D8AF /* JTAAppDelegate.m */,
+				1A0A02AE19057C5A0013D8AF /* Main.storyboard */,
+				1A0A02B119057C5A0013D8AF /* JTAViewController.h */,
+				1A0A02B219057C5A0013D8AF /* JTAViewController.m */,
+				1A0A02B419057C5A0013D8AF /* Images.xcassets */,
+				1A0A02A319057C5A0013D8AF /* Supporting Files */,
+				1A0A02D319057D6C0013D8AF /* polylineFunctions.c */,
+				1AAAC10B190702DE00F36316 /* polylineFunctions.h */,
+			);
+			path = googlePolylineTest;
+			sourceTree = "<group>";
+		};
+		1A0A02A319057C5A0013D8AF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A02A419057C5A0013D8AF /* googlePolylineTest-Info.plist */,
+				1A0A02A519057C5A0013D8AF /* InfoPlist.strings */,
+				1A0A02A819057C5A0013D8AF /* main.m */,
+				1A0A02AA19057C5A0013D8AF /* googlePolylineTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A0A02C119057C5A0013D8AF /* googlePolylineTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A02C719057C5A0013D8AF /* googlePolylineTestTests.m */,
+				1A0A02C219057C5A0013D8AF /* Supporting Files */,
+			);
+			path = googlePolylineTestTests;
+			sourceTree = "<group>";
+		};
+		1A0A02C219057C5A0013D8AF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A02C319057C5A0013D8AF /* googlePolylineTestTests-Info.plist */,
+				1A0A02C419057C5A0013D8AF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A0A029819057C5A0013D8AF /* googlePolylineTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0A02CB19057C5A0013D8AF /* Build configuration list for PBXNativeTarget "googlePolylineTest" */;
+			buildPhases = (
+				1A0A029519057C5A0013D8AF /* Sources */,
+				1A0A029619057C5A0013D8AF /* Frameworks */,
+				1A0A029719057C5A0013D8AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = googlePolylineTest;
+			productName = googlePolylineTest;
+			productReference = 1A0A029919057C5A0013D8AF /* googlePolylineTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1A0A02B919057C5A0013D8AF /* googlePolylineTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0A02CE19057C5A0013D8AF /* Build configuration list for PBXNativeTarget "googlePolylineTestTests" */;
+			buildPhases = (
+				1A0A02B619057C5A0013D8AF /* Sources */,
+				1A0A02B719057C5A0013D8AF /* Frameworks */,
+				1A0A02B819057C5A0013D8AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A0A02C019057C5A0013D8AF /* PBXTargetDependency */,
+			);
+			name = googlePolylineTestTests;
+			productName = googlePolylineTestTests;
+			productReference = 1A0A02BA19057C5A0013D8AF /* googlePolylineTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A0A029119057C5A0013D8AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JTA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "James Snook";
+				TargetAttributes = {
+					1A0A02B919057C5A0013D8AF = {
+						TestTargetID = 1A0A029819057C5A0013D8AF;
+					};
+				};
+			};
+			buildConfigurationList = 1A0A029419057C5A0013D8AF /* Build configuration list for PBXProject "googlePolylineTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0A029019057C5A0013D8AF;
+			productRefGroup = 1A0A029A19057C5A0013D8AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0A029819057C5A0013D8AF /* googlePolylineTest */,
+				1A0A02B919057C5A0013D8AF /* googlePolylineTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0A029719057C5A0013D8AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02B519057C5A0013D8AF /* Images.xcassets in Resources */,
+				1A0A02A719057C5A0013D8AF /* InfoPlist.strings in Resources */,
+				1A0A02B019057C5A0013D8AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0A02B819057C5A0013D8AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02C619057C5A0013D8AF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A0A029519057C5A0013D8AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02B319057C5A0013D8AF /* JTAViewController.m in Sources */,
+				1A0A02D419057D6C0013D8AF /* polylineFunctions.c in Sources */,
+				1A0A02AD19057C5A0013D8AF /* JTAAppDelegate.m in Sources */,
+				1A0A02A919057C5A0013D8AF /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0A02B619057C5A0013D8AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0A02C819057C5A0013D8AF /* googlePolylineTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A0A02C019057C5A0013D8AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A0A029819057C5A0013D8AF /* googlePolylineTest */;
+			targetProxy = 1A0A02BF19057C5A0013D8AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1A0A02A519057C5A0013D8AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A0A02A619057C5A0013D8AF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1A0A02AE19057C5A0013D8AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A0A02AF19057C5A0013D8AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1A0A02C419057C5A0013D8AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A0A02C519057C5A0013D8AF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1A0A02C919057C5A0013D8AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1A0A02CA19057C5A0013D8AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0A02CC19057C5A0013D8AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "googlePolylineTest/googlePolylineTest-Prefix.pch";
+				INFOPLIST_FILE = "googlePolylineTest/googlePolylineTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1A0A02CD19057C5A0013D8AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "googlePolylineTest/googlePolylineTest-Prefix.pch";
+				INFOPLIST_FILE = "googlePolylineTest/googlePolylineTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1A0A02CF19057C5A0013D8AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/googlePolylineTest.app/googlePolylineTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "googlePolylineTest/googlePolylineTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "googlePolylineTestTests/googlePolylineTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1A0A02D019057C5A0013D8AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/googlePolylineTest.app/googlePolylineTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "googlePolylineTest/googlePolylineTest-Prefix.pch";
+				INFOPLIST_FILE = "googlePolylineTestTests/googlePolylineTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A0A029419057C5A0013D8AF /* Build configuration list for PBXProject "googlePolylineTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0A02C919057C5A0013D8AF /* Debug */,
+				1A0A02CA19057C5A0013D8AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0A02CB19057C5A0013D8AF /* Build configuration list for PBXNativeTarget "googlePolylineTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0A02CC19057C5A0013D8AF /* Debug */,
+				1A0A02CD19057C5A0013D8AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0A02CE19057C5A0013D8AF /* Build configuration list for PBXNativeTarget "googlePolylineTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0A02CF19057C5A0013D8AF /* Debug */,
+				1A0A02D019057C5A0013D8AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A0A029119057C5A0013D8AF /* Project object */;
+}
