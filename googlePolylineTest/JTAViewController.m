@@ -9,6 +9,8 @@
 #import "JTAViewController.h"
 #import "polylineFunctions.h"
 
+#define BUFFER_INCREMENT_SIZE 512
+
 @interface JTAViewController ()
 
 @end
@@ -53,12 +55,12 @@
       [manager setDelegate:self];
       [manager setDesiredAccuracy:kCLLocationAccuracyBest];
       
-      savedDiffsLength = 1024;
+      savedDiffsLength = 2 * BUFFER_INCREMENT_SIZE;
       savedDiffs = malloc (savedDiffsLength * sizeof(int32_t));
       savedDiffsCount = 0;
       encodedPolyline = [NSMutableString string];
       
-      recordedLocsLength = 512;
+      recordedLocsLength = BUFFER_INCREMENT_SIZE;
       recordedLocs = malloc (recordedLocsLength * sizeof(CLLocationCoordinate2D));
       recordedLocsCount = 0;
     }
@@ -160,13 +162,13 @@
   savedDiffs[savedDiffsCount++] = lngDiff;
   
   if (recordedLocsCount >= recordedLocsLength - 1) {
-    recordedLocsLength += 512;
+    recordedLocsLength += BUFFER_INCREMENT_SIZE;
     recordedLocs = realloc(recordedLocs, recordedLocsLength
                            * sizeof(CLLocationCoordinate2D));
   }
   
   if (savedDiffsCount >= savedDiffsLength - 1) {
-    savedDiffsLength += 1024;
+    savedDiffsLength += 2 * BUFFER_INCREMENT_SIZE;
     savedDiffs = realloc(savedDiffs, savedDiffsLength * sizeof(int32_t));
   }
 }
