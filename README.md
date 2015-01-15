@@ -4,6 +4,10 @@ You can get this code using Mercurial by doing:
 
 `hg clone http://hg.twistedape.me.uk/googlepolyline`
 
+or going to:
+
+`http://hg.twistedape.me.uk/googlepolyline/downloads`
+
 This is a C tool for encoding and decoding a Google Polyline.
 The C files for encoding and decoding the polyline are at 
 `googlePolylineTest/polylineFunctions.h` and `googlePolylineTest/polylineFunctions.c`.
