@@ -52,6 +52,11 @@
     
     if (!manager) {
       manager = [[CLLocationManager alloc] init];
+      
+      if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [manager requestWhenInUseAuthorization];
+      }
+      
       [manager setDelegate:self];
       [manager setDesiredAccuracy:kCLLocationAccuracyBest];
       
@@ -74,7 +79,7 @@
     [manager stopUpdatingLocation];
     
     char *encodeAll = copyEncodedLocationsString((Coordinate *)recordedLocs,
-                                                 recordedLocsCount);
+                                                 (int)recordedLocsCount);
     BOOL passedTest = [encodedPolyline isEqualToString:
                        [NSString stringWithUTF8String:encodeAll]];
     

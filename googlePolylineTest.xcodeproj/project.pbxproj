@@ -209,6 +209,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "James Snook";
 				TargetAttributes = {
+					1A0A029819057C5A0013D8AF = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
 					1A0A02B919057C5A0013D8AF = {
 						TestTargetID = 1A0A029819057C5A0013D8AF;
 					};
