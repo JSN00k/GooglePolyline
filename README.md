@@ -2,7 +2,7 @@
 
 You can get this code using Mercurial by doing:
 
-`hg clone http://hg.twistedape.me.uk/googlepolyline`
+`hg clone http://bitbucket.org/James_Snook/googlepolyline`
 
 or using this [download link](http://bitbucket.org/James_Snook/googlepolyline/get/f5736112c9bd.zip).
 
