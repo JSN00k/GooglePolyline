@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "polylineFunctions.h"
 
@@ -68,7 +69,6 @@ char *copyEncodedLocationsString (Coordinate *coords, unsigned coordsCount)
   /* Hopefully this should be enough that we don't have to allocate more data
      later. */
   char *result = malloc (resultLength);
-  
   
   int32_t intLat;
   int32_t intLng;
@@ -135,7 +135,7 @@ int32_t decodeDifferenceVal (char *chars, unsigned *usedChars)
 
 Coordinate *decodeLocationsString (char *polylineString, unsigned *locsCount)
 {
-  int charsCount = strlen (polylineString);
+  unsigned charsCount = (unsigned)strlen (polylineString);
   if (!charsCount)
     return NULL;
   
@@ -162,7 +162,13 @@ Coordinate *decodeLocationsString (char *polylineString, unsigned *locsCount)
     ++resultCount;
     
     if (resultCount >= resultLength - 1) {
-      resultLength += (charsCount - totalUsedChars) / 3 + 2;
+      /* We know how many chars we've used, and we know how many lat/longs we've
+         got. Assume that we'll continue to have this many chars/latlong and 
+         calculate the number of lat/longs we think we'll get in totall, add a 
+         small amount in the hope that we're less likely to need to realloc 
+         again. */
+      float charsPerLatLong = (float)totalUsedChars / resultCount;
+      resultLength += (charsCount - totalUsedChars) / charsPerLatLong + 10;
       result = realloc (result, resultLength * sizeof(Coordinate));
     }
     
