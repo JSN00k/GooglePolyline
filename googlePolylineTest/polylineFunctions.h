@@ -15,15 +15,18 @@ typedef struct Coordinate
   double longitude;
 } Coordinate;
 
-/* Encodes a single int32 to its polyline equivelent.
- 
- val is the int to encode.
- result is the area in memory to write the result to.
- length is the amount of length that the encoding used.
- 
- Discussion: the polylines can use up to 6 bytes of memory so result must 
- have at least this amount of space available. */
-void encodedIntValue (int32_t val, char *result, unsigned *length);
+/* 
+ Value: The latitude or longitude to encode.
+ previousIntVal: For the first call this should point at 0. It is updated
+                 in the function to the value that it needs to be for
+                 subsequent calls. This value must be unique to each set of
+                 values you're encoding (i.e. you can't point at the same
+                 thing for latitude and longitude).
+ result: A buffer with at least 5 chars of space available (as this is the
+         maximum number of characters that can be added).
+ length: A value that returns the number of chars that were added to result.
+*/
+void encodedValue (double val, int32_t *previousIntVal, char *result, unsigned *length);
 
 /* Encodes a sersion of location Coordinates to a C string and passes the
    string out as the result. */

@@ -15,33 +15,49 @@
 
 #include "polylineFunctions.h"
 
-void encodedIntValue (int32_t val, char *result, unsigned *length)
+/* Value: The latitude or longitude to encode.
+   previousIntVal: For the first call this should point at 0. It is updated
+                   in the function to the value that it needs to be for
+                   subsequent calls. This value must be unique to each set of
+                   values you're encoding (i.e. you can't point at the same
+                   thing for latitude and longitude).
+   result: A buffer with at least 5 chars of space available (as this is the
+           maximum number of characters that can be added).
+   length: A value that returns the number of chars that were added to result.
+*/
+void encodedValue (double val, int32_t *previousIntVal, char *result, unsigned *length)
 {
-  bool isNeg = val < 0;
+  /* Convert the current latitude and longitude to their integer
+     representation. */
+  int32_t intVal = round (val * 1e5);
+  int32_t diffVal = intVal - *previousIntVal;
+  *previousIntVal = intVal;
+  
+  bool isNeg = diffVal < 0;
   /* Shift the value right by 1 to make room for the sign bit on the right 
      hand side. */
-  val <<= 1;
+  diffVal <<= 1;
   
   if (isNeg) {
     /* As the value is stored as a twos compliment value small values have a 
        lot of bits set so not the value. This will also flip the value of the
        sign bit so when we come to decode the value we will know that it is 
        negative. */
-    val = ~val;
+    diffVal = ~diffVal;
   }
   
   unsigned count = 0;
   
   do {
     /* get the smallest 5 bits from our value and add them to the charaters. */
-    result[count] = val & 0x1f;
+    result[count] = diffVal & 0x1f;
     
     /* We've saved the last 5 bits we can remove them from the value. We shift
        the value by 5 meaning that the next 5 bits that we need to save will be
        at the end of the value. */
-    val >>= 5;
+    diffVal >>= 5;
     
-    if (val) {
+    if (diffVal) {
       /* We have more bits to encode, so we need to set the continuation bit. */
       result[count] |= 0x20;
     }
@@ -49,7 +65,7 @@ void encodedIntValue (int32_t val, char *result, unsigned *length)
     result[count] += 63;
     
     ++count;
-  } while (val);
+  } while (diffVal);
 
   if (!length)
     printf ("required value `length` not set in `encodeIntValue`");
@@ -70,32 +86,23 @@ char *copyEncodedLocationsString (Coordinate *coords, unsigned coordsCount)
      later. */
   char *result = malloc (resultLength);
   
-  int32_t intLat;
-  int32_t intLng;
-  
   unsigned encodedLen;
   
   for (int i = 0; i < coordsCount; ++i) {
-    /* Convert the current latitude and longitude to their integer 
-       representation. */
-    intLat = round (coords[i].latitude * 1e5);
-    intLng = round (coords[i].longitude * 1e5);
-    
     /* Encode the difference between the current integer representation, and
        the previous integer representaion. */
-    encodedIntValue (intLat - previousIntLat,
+    encodedValue (coords[i].latitude,
+                     &previousIntLat,
                      result + resultCount,
                      &encodedLen);
     resultCount += encodedLen;
     
     /* Then do the same for the latitudes. */
-    encodedIntValue (intLng - previousIntLng,
+    encodedValue (coords[i].longitude,
+                     &previousIntLng,
                      result + resultCount,
                      &encodedLen);
     resultCount += encodedLen;
-    
-    previousIntLat = intLat;
-    previousIntLng = intLng;
     
     if (resultLength - resultCount < 10) {
       /* In this case we may overfun our results buffer, so we need to allocate

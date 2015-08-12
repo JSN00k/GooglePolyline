@@ -126,24 +126,28 @@
   [_latLng setText:[NSString stringWithFormat:
                     @"%f, %f", loc.latitude, loc.longitude]];
   
-  int32_t intLat = round (loc.latitude * 1e5);
-  int32_t intLng = round (loc.longitude * 1e5);
-  
-  int32_t latDiff = intLat - prevIntLat;
-  int32_t lngDiff = intLng - prevIntLng;
+  int32_t latDiff = 0;
+  int32_t lngDiff = 0;
   
   [_diffs setText:[NSString stringWithFormat:
                    @"%d, %d", latDiff, lngDiff]];
   char encoded[7];
   unsigned length;
-  encodedIntValue (latDiff, encoded, &length);
+  
+  uint32_t prevIntLat1 = prevIntLat;
+  encodedValue(loc.latitude, &prevIntLat, encoded, &length);
+  lngDiff = prevIntLat1 - prevIntLat;
   encoded[length] = '\0';
   
   int32_t decodedLat = decodeDifferenceVal (encoded, &length);
   
   NSString *encodedLatStr = [NSString stringWithUTF8String:encoded];
   
-  encodedIntValue (lngDiff, encoded, &length);
+  int32_t prevIntLng1 = prevIntLng;
+  
+  encodedValue(loc.longitude, &prevIntLng, encoded, &length);
+  
+  latDiff = prevIntLng1 - prevIntLng;
   encoded[length] = '\0';
   NSString *encodedLngStr = [NSString stringWithUTF8String:encoded];
   
@@ -158,9 +162,6 @@
   
   [encodedPolyline appendFormat:@"%@%@", encodedLatStr, encodedLngStr];
   [_polyline setText:encodedPolyline];
-  
-  prevIntLng = intLng;
-  prevIntLat = intLat;
   
   recordedLocs[recordedLocsCount++] = loc;
   savedDiffs[savedDiffsCount++] = latDiff;
