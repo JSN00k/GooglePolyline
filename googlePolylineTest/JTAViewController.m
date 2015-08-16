@@ -31,6 +31,8 @@
   CLLocationCoordinate2D *recordedLocs;
   NSUInteger recordedLocsLength;
   NSUInteger recordedLocsCount;
+  
+  NSMutableString *exampleFileStr;
 }
 
 - (void)viewDidLoad
@@ -77,6 +79,8 @@
     [_recordButton setNeedsDisplay];
   } else {
     [manager stopUpdatingLocation];
+    NSLog(@"%@", exampleFileStr);
+    exampleFileStr = nil;
     
     char *encodeAll = copyEncodedLocationsString((Coordinate *)recordedLocs,
                                                  (int)recordedLocsCount);
@@ -122,7 +126,12 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
+  if (!exampleFileStr)
+    exampleFileStr = [NSMutableString string];
+  
   CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
+  NSLog(@"%lf", loc.latitude);
+  [exampleFileStr appendFormat:@"%lf, %lf\n", loc.latitude, loc.longitude];
   [_latLng setText:[NSString stringWithFormat:
                     @"%f, %f", loc.latitude, loc.longitude]];
   
