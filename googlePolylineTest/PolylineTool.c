@@ -1,3 +1,8 @@
+/* This #define makes it so the 'fileno' function is declared in stdio.h 
+   It's not part of the C standard so making it work on Windows may
+   require some extra work. */
+#define _POSIX_C_SOURCE 1
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
