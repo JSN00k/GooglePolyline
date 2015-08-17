@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "PolylineFunctions.h"
+#include "polylineFunctions.h"
 
 /* result is passed in as a pointer as it makes it easy to set it to NULL
    at the end of the file. */
