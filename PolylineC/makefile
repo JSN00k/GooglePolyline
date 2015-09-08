@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS = -std=c99 -Wall -O2 -g
 LDFLAGS=-lm
-SRCS = polylineFunctions.c PolylineTool.c
+SRCS = polylineFunctions.c PolylineTool.c AppendableDataStore.c
 OBJ = $(SRCS:.c=.o)
 EXECUTABLE=PolylineTool
 

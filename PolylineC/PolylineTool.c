@@ -39,29 +39,55 @@ bool nextLocation (FILE *in, Coordinate *result) {
 
 void encodeLocations (FILE *instream, FILE *outstream)
 {
-  int32_t prevLatVal = 0;
-  int32_t prevLngVal = 0;
-  char charBuff[10];
-  unsigned charCount = 0;
-  bool finished = false;
- 
+  PolylineEncoder *encoder = PolylineEncoderCreate ();
+  char charBuffer[11];
   while (true) {
     Coordinate nextCoord;
-    finished  = nextLocation (instream, &nextCoord);
+    bool finished = nextLocation (instream, &nextCoord);
     if (finished) {
       /* Hey we're all done! let's return. */
       return;
     } else {
       /* We've got a new coordinate to encode let's do that. */
-      encodedValue (nextCoord.latitude, &prevLatVal, charBuff, &charCount);
-      charBuff[charCount] = '\0';
-      fprintf (outstream, "%s", charBuff);
-
-      encodedValue (nextCoord.longitude, &prevLngVal, charBuff, &charCount);
-      charBuff[charCount] = '\0';
-      fprintf (outstream, "%s", charBuff);
+      unsigned charCount = PolylineEncoderGetEncodedCoordinate (encoder,
+                                                                 nextCoord,
+                                                                 charBuffer);
+      
+      charBuffer[charCount] = '\0';
+      fprintf (outstream, "%s", charBuffer);
     }
   }
+}
+
+void decodeLocations (FILE *instream, FILE *outstream) {
+  PolylineEncoder *encoder = PolylineEncoderCreate ();
+  char polylineChars[128];
+  unsigned charsCount = fread (polylineChars, sizeof (char), 127, instream);
+  polylineChars[127] = '\0';
+  unsigned decodedCount;
+  
+  do {
+    Coordinate *decoded = PolylineEncoderGetDecodedCoordinates (encoder,
+                                                                polylineChars,
+                                                                &decodedCount);
+    if (decodedCount) {
+      for (int i = 0; i < decodedCount; ++i) {
+        fprintf (outstream, "%lf, %lf\n",
+                 decoded[i].latitude, decoded[i].longitude);
+      }
+    }
+    
+    if (charsCount < 127) {
+      /* We've either ended or something has gone wrong!*/
+      if (feof (instream)) {
+        /* Great we got to the end of the file without any issues let's return. */
+        return;
+      } else {
+        fprintf (stderr, "Failed to read characters from the input stream.");
+        exit (1);
+      }
+    }
+  } while (true);
 }
 
 int main (int argc, char **argv) {

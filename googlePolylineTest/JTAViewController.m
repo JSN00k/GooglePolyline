@@ -8,6 +8,7 @@
 
 #import "JTAViewController.h"
 #import "polylineFunctions.h"
+#import "AppendableDataStore.h"
 
 #define BUFFER_INCREMENT_SIZE 512
 
@@ -19,12 +20,6 @@
 {
   BOOL isRecording;
   CLLocationManager *manager;
-  int32_t prevIntLat;
-  int32_t prevIntLng;
-  
-  int32_t *savedDiffs;
-  NSUInteger savedDiffsLength;
-  NSUInteger savedDiffsCount;
   
   NSMutableString *encodedPolyline;
   
@@ -33,7 +28,16 @@
   NSUInteger recordedLocsCount;
   
   NSMutableString *exampleFileStr;
+  PolylineEncoder *encoder;
 }
+
+struct PolylineEncoder {
+  int32_t intLat;
+  int32_t intLng;
+  AppendableDataStore *dataStore;
+  unsigned nodeCount;
+  char *unusedChars;
+};
 
 - (void)viewDidLoad
 {
@@ -49,9 +53,6 @@
 - (void)buttonPressed:(id)sender
 {
   if (!isRecording) {
-    prevIntLat = 0;
-    prevIntLng = 0;
-    
     if (!manager) {
       manager = [[CLLocationManager alloc] init];
       
@@ -62,9 +63,6 @@
       [manager setDelegate:self];
       [manager setDesiredAccuracy:kCLLocationAccuracyBest];
       
-      savedDiffsLength = 2 * BUFFER_INCREMENT_SIZE;
-      savedDiffs = malloc (savedDiffsLength * sizeof(int32_t));
-      savedDiffsCount = 0;
       encodedPolyline = [NSMutableString string];
       
       recordedLocsLength = BUFFER_INCREMENT_SIZE;
@@ -125,66 +123,66 @@
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
-{
+{    
   if (!exampleFileStr)
     exampleFileStr = [NSMutableString string];
   
   CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
-  NSLog(@"%lf", loc.latitude);
   [exampleFileStr appendFormat:@"%lf, %lf\n", loc.latitude, loc.longitude];
   [_latLng setText:[NSString stringWithFormat:
                     @"%f, %f", loc.latitude, loc.longitude]];
   
-  int32_t latDiff = 0;
-  int32_t lngDiff = 0;
+  if (!encoder)
+    encoder = PolylineEncoderCreate();
   
+  char encoded[11];
+  
+  Coordinate coord;
+  coord.latitude = loc.latitude;
+  coord.longitude = loc.longitude;
+  
+  int32_t previousIntLat = encoder->intLat;
+  int32_t previousIntLng = encoder->intLng;
+  unsigned len = PolylineEncoderGetEncodedCoordinate(encoder,
+                                                     coord,
+                                                     encoded);
+  
+  encoded[len] = '\0';
+  
+  unsigned decodedCount = 0;
+  /* Make a temporary encoder to decode only the string segment that 
+     we just encoded without the context of the rest of the string. */
+  PolylineEncoder *tmpEncoder = PolylineEncoderCreate();
+  PolylineEncoderGetDecodedCoordinates(tmpEncoder, encoded,
+                                       &decodedCount);
+  
+
+  int32_t latDiff = encoder->intLat - previousIntLat;
+  int32_t lngDiff = encoder->intLng - previousIntLng;
   [_diffs setText:[NSString stringWithFormat:
                    @"%d, %d", latDiff, lngDiff]];
-  char encoded[7];
-  unsigned length;
   
-  uint32_t prevIntLat1 = prevIntLat;
-  encodedValue(loc.latitude, &prevIntLat, encoded, &length);
-  lngDiff = prevIntLat1 - prevIntLat;
-  encoded[length] = '\0';
-  
-  int32_t decodedLat = decodeDifferenceVal (encoded, &length);
-  
-  NSString *encodedLatStr = [NSString stringWithUTF8String:encoded];
-  
-  int32_t prevIntLng1 = prevIntLng;
-  
-  encodedValue(loc.longitude, &prevIntLng, encoded, &length);
-  
-  latDiff = prevIntLng1 - prevIntLng;
-  encoded[length] = '\0';
-  NSString *encodedLngStr = [NSString stringWithUTF8String:encoded];
-  
-  int32_t decodedLng = decodeDifferenceVal (encoded, &length);
-  
-  [_encodedDiffs setText:[NSString stringWithFormat:@"%@, %@",
-                          encodedLatStr, encodedLngStr]];
+  [_encodedDiffs setText:[NSString stringWithFormat:@"%s", encoded]];
   
   [_decodedDiffs setText:[NSString stringWithFormat:@"%d, %d",
-                          decodedLat, decodedLng]];
+                          tmpEncoder->intLat,
+                          tmpEncoder->intLng]];
   
+  NSAssert (latDiff == tmpEncoder->intLat && lngDiff == tmpEncoder->intLng,
+            @"Either the encoder failed to encode the value properly or the decoder "
+            @"failed to decode the value properly, as they don't match (or possibly both)");
   
-  [encodedPolyline appendFormat:@"%@%@", encodedLatStr, encodedLngStr];
+  PolylineEncoderFree(tmpEncoder);
+  
+  [encodedPolyline appendFormat:@"%s", encoded];
   [_polyline setText:encodedPolyline];
   
   recordedLocs[recordedLocsCount++] = loc;
-  savedDiffs[savedDiffsCount++] = latDiff;
-  savedDiffs[savedDiffsCount++] = lngDiff;
   
   if (recordedLocsCount >= recordedLocsLength - 1) {
     recordedLocsLength += BUFFER_INCREMENT_SIZE;
     recordedLocs = realloc(recordedLocs, recordedLocsLength
                            * sizeof(CLLocationCoordinate2D));
-  }
-  
-  if (savedDiffsCount >= savedDiffsLength - 1) {
-    savedDiffsLength += 2 * BUFFER_INCREMENT_SIZE;
-    savedDiffs = realloc(savedDiffs, savedDiffsLength * sizeof(int32_t));
   }
 }
 

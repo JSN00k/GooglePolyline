@@ -22,7 +22,8 @@
 		1A0A02C619057C5A0013D8AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A02C419057C5A0013D8AF /* InfoPlist.strings */; };
 		1A0A02C819057C5A0013D8AF /* googlePolylineTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02C719057C5A0013D8AF /* googlePolylineTestTests.m */; };
 		1A0A02D219057CFF0013D8AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02D119057CFF0013D8AF /* CoreLocation.framework */; };
-		1A0A02D419057D6C0013D8AF /* polylineFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A02D319057D6C0013D8AF /* polylineFunctions.c */; };
+		1A256D771B9CBC700007ED6D /* AppendableDataStore.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A256D761B9CBC700007ED6D /* AppendableDataStore.c */; };
+		1A256D7B1B9CBCB20007ED6D /* polylineFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A256D791B9CBCB20007ED6D /* polylineFunctions.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +57,10 @@
 		1A0A02C519057C5A0013D8AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A0A02C719057C5A0013D8AF /* googlePolylineTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = googlePolylineTestTests.m; sourceTree = "<group>"; };
 		1A0A02D119057CFF0013D8AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		1A0A02D319057D6C0013D8AF /* polylineFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polylineFunctions.c; sourceTree = "<group>"; };
-		1AAAC10B190702DE00F36316 /* polylineFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = polylineFunctions.h; sourceTree = "<group>"; };
+		1A256D761B9CBC700007ED6D /* AppendableDataStore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = AppendableDataStore.c; path = PolylineC/AppendableDataStore.c; sourceTree = SOURCE_ROOT; };
+		1A256D781B9CBC7E0007ED6D /* AppendableDataStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppendableDataStore.h; path = PolylineC/AppendableDataStore.h; sourceTree = SOURCE_ROOT; };
+		1A256D791B9CBCB20007ED6D /* polylineFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = polylineFunctions.c; path = PolylineC/polylineFunctions.c; sourceTree = SOURCE_ROOT; };
+		1A256D7A1B9CBCB20007ED6D /* polylineFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = polylineFunctions.h; path = PolylineC/polylineFunctions.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 		1A0A02A219057C5A0013D8AF /* googlePolylineTest */ = {
 			isa = PBXGroup;
 			children = (
+				1A256D751B9CBC250007ED6D /* CPolylineLib */,
 				1A0A02AB19057C5A0013D8AF /* JTAAppDelegate.h */,
 				1A0A02AC19057C5A0013D8AF /* JTAAppDelegate.m */,
 				1A0A02AE19057C5A0013D8AF /* Main.storyboard */,
@@ -126,8 +130,6 @@
 				1A0A02B219057C5A0013D8AF /* JTAViewController.m */,
 				1A0A02B419057C5A0013D8AF /* Images.xcassets */,
 				1A0A02A319057C5A0013D8AF /* Supporting Files */,
-				1A0A02D319057D6C0013D8AF /* polylineFunctions.c */,
-				1AAAC10B190702DE00F36316 /* polylineFunctions.h */,
 			);
 			path = googlePolylineTest;
 			sourceTree = "<group>";
@@ -159,6 +161,17 @@
 				1A0A02C419057C5A0013D8AF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A256D751B9CBC250007ED6D /* CPolylineLib */ = {
+			isa = PBXGroup;
+			children = (
+				1A256D781B9CBC7E0007ED6D /* AppendableDataStore.h */,
+				1A256D761B9CBC700007ED6D /* AppendableDataStore.c */,
+				1A256D7A1B9CBCB20007ED6D /* polylineFunctions.h */,
+				1A256D791B9CBCB20007ED6D /* polylineFunctions.c */,
+			);
+			name = CPolylineLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +280,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0A02B319057C5A0013D8AF /* JTAViewController.m in Sources */,
-				1A0A02D419057D6C0013D8AF /* polylineFunctions.c in Sources */,
+				1A256D7B1B9CBCB20007ED6D /* polylineFunctions.c in Sources */,
+				1A256D771B9CBC700007ED6D /* AppendableDataStore.c in Sources */,
 				1A0A02AD19057C5A0013D8AF /* JTAAppDelegate.m in Sources */,
 				1A0A02A919057C5A0013D8AF /* main.m in Sources */,
 			);
