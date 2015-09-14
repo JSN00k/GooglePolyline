@@ -192,13 +192,14 @@ static inline int PolylineEncoderDecodeUnusedChars (PolylineEncoder *encoder,
   unsigned minStringLength = 0;
   unsigned usedChars;
   Coordinate coord;
-  for (; minStringLength < 11 - unusedLen; ++minStringLength) {
+  for (; minStringLength < 10 - unusedLen; ++minStringLength) {
     if (encodedString[minStringLength] == '\0')
       break;
   }
 
   if (!minStringLength) {
     /* There were no new characters in encodedString. */
+    encoder->unusedChars = NULL;
     return -1;
   }
 
@@ -207,7 +208,7 @@ static inline int PolylineEncoderDecodeUnusedChars (PolylineEncoder *encoder,
 
   /* If there are less than 10 charaters in the string now it's possible
      that we still won't be able to decode the next value. */
-  bool gotNextCoord = PolylineEncoderDecodeNextCoord (encoder, encodedString,
+  bool gotNextCoord = PolylineEncoderDecodeNextCoord (encoder, encoder->unusedChars,
                                                       10, &coord, &usedChars);
   /* It's possoble that we still don't have enough charaters to decode
      a value. */
@@ -266,9 +267,17 @@ Coordinate *PolylineEncoderGetDecodedCoordinates (PolylineEncoder *encoder,
                                                   char *encodedString,
                                                   unsigned *decodedCount)
 {
+  if (encodedString[0] == '\0') {
+    *decodedCount = 0;
+    return NULL;
+  }
+  
   PolylineEncoderDecodeCoordinates (encoder,
                                     encodedString,
                                     decodedCount);
+  if (!decodedCount)
+    return NULL;
+  
   Coordinate *result = AppendableDataStoreGetData (encoder->dataStore);
   AppendableDataStoreFree (encoder->dataStore);
   encoder->dataStore = NULL;

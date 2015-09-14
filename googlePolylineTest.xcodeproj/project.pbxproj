@@ -24,6 +24,7 @@
 		1A0A02D219057CFF0013D8AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0A02D119057CFF0013D8AF /* CoreLocation.framework */; };
 		1A256D771B9CBC700007ED6D /* AppendableDataStore.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A256D761B9CBC700007ED6D /* AppendableDataStore.c */; };
 		1A256D7B1B9CBCB20007ED6D /* polylineFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A256D791B9CBCB20007ED6D /* polylineFunctions.c */; };
+		1A5D9FB41BA48D3800158B37 /* ExampleCoords in Resources */ = {isa = PBXBuildFile; fileRef = 1A5D9FB31BA48D3800158B37 /* ExampleCoords */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1A256D781B9CBC7E0007ED6D /* AppendableDataStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppendableDataStore.h; path = PolylineC/AppendableDataStore.h; sourceTree = SOURCE_ROOT; };
 		1A256D791B9CBCB20007ED6D /* polylineFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = polylineFunctions.c; path = PolylineC/polylineFunctions.c; sourceTree = SOURCE_ROOT; };
 		1A256D7A1B9CBCB20007ED6D /* polylineFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = polylineFunctions.h; path = PolylineC/polylineFunctions.h; sourceTree = SOURCE_ROOT; };
+		1A5D9FB31BA48D3800158B37 /* ExampleCoords */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ExampleCoords; path = PolylineC/ExampleCoords; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		1A0A02C219057C5A0013D8AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1A5D9FB31BA48D3800158B37 /* ExampleCoords */,
 				1A0A02C319057C5A0013D8AF /* googlePolylineTestTests-Info.plist */,
 				1A0A02C419057C5A0013D8AF /* InfoPlist.strings */,
 			);
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0A02C619057C5A0013D8AF /* InfoPlist.strings in Resources */,
+				1A5D9FB41BA48D3800158B37 /* ExampleCoords in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
