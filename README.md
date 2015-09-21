@@ -8,8 +8,8 @@ or using this [download link](http://bitbucket.org/James_Snook/googlepolyline/ge
 
 This is a C tool for encoding and decoding a Google Polyline.
 The C files for encoding and decoding the polyline are in the PolylineC folder
-You can use the C Code in a project by including the polylineFunctions.* files, and the AppendableDataStore.* files 
-(the polylineFunctions.* files
+You can use the C Code in a project by including the polylineFunctions.* files, 
+and the AppendableDataStore.* files (the polylineFunctions.* files
 require the AppendableDataStore code. The makefile will build an executable
 called PolylineTool which takes input from stdin and writes a polyline to
 stdout. The input needs to look like the text in the  ExampleCoords file.
