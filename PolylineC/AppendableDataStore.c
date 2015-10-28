@@ -22,7 +22,7 @@ struct AppendableDataStore {
   /* This size of the dataType to be stored in the Linked List. */
   size_t dataTypeSize;
   /* The number of elements of dataType that each node can store. */
-  unsigned capacity;
+  unsigned nodeCapacity;
   unsigned nodeCount;
 
   /* Used by the AppendableDataStoreNext function to get the next
@@ -43,50 +43,49 @@ void LinkedListFree ();
 AppendableDataStore *AppendableDataStoreCreate (unsigned count, size_t typeSize) {
   AppendableDataStore *result = malloc (sizeof (AppendableDataStore));
   result->dataTypeSize = typeSize;
-  result->capacity = count;
+  result->nodeCapacity = count;
   result->nodeCount = 0;
   result->lastNode = NULL;
   return result;
 }
 
 void AppendableDataStoreAddData (AppendableDataStore *manager,
-                         void *data, unsigned count) {
+                                 void *data, unsigned count) {
   manager->dataCount += count;
   if (!manager->lastNode) {
-    manager->lastNode = LinkedListCreate (manager->capacity,
+    manager->lastNode = LinkedListCreate (manager->nodeCapacity,
                                           manager->dataTypeSize);
     ++manager->nodeCount;
   }
   
-  LinkedList *list = manager->lastNode;
-  if (list->dataCount + count <= manager->capacity) {
-    memcpy (list->data + list->dataCount * manager->dataTypeSize,
+  LinkedList *currentNode = manager->lastNode;
+  if (currentNode->dataCount + count <= manager->nodeCapacity) {
+    memcpy (currentNode->data + currentNode->dataCount * manager->dataTypeSize,
             data, count * manager->dataTypeSize);
-    list->dataCount += count;
+    currentNode->dataCount += count;
     return;
   }
 
-  LinkedList *currentNode = list;
   unsigned remainingDataToCopy = count;
 
-  while (currentNode->dataCount + remainingDataToCopy > manager->capacity) {
-    unsigned dataToCopyCount = manager->capacity - currentNode->dataCount;
+  while (currentNode->dataCount + remainingDataToCopy > manager->nodeCapacity) {
+    unsigned dataToCopyCount = manager->nodeCapacity - currentNode->dataCount;
     unsigned dataToCopySize = (unsigned)(dataToCopyCount * manager->dataTypeSize);
     memcpy (currentNode->data + currentNode->dataCount * manager->dataTypeSize,
             data, dataToCopySize);
     
     data += dataToCopySize;
-    list->dataCount = manager->capacity;
-    LinkedList *newNode = LinkedListCreate (manager->capacity, manager->dataTypeSize);
-    newNode->next = list->next;
-    list->next = newNode;
+    currentNode->dataCount = manager->nodeCapacity;
+    LinkedList *newNode = LinkedListCreate (manager->nodeCapacity, manager->dataTypeSize);
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
     ++manager->nodeCount;
     currentNode = newNode;
   }
 
   memcpy (currentNode->data, data, remainingDataToCopy * manager->dataTypeSize);
   currentNode->dataCount += remainingDataToCopy;
-  manager->lastNode = list;
+  manager->lastNode = currentNode;
 }
 
 size_t AppendableDataStoreDataSize (AppendableDataStore *manager) {
