@@ -1,11 +1,5 @@
 ### Google Polyline Tool
 
-You can get this code using Mercurial by doing:
-
-`hg clone http://bitbucket.org/James_Snook/googlepolyline`
-
-or using this [download link](http://bitbucket.org/James_Snook/googlepolyline/get/f5736112c9bd.zip).
-
 This is a C tool for encoding and decoding a Google Polyline.
 The C files for encoding and decoding the polyline are in the PolylineC folder
 You can use the C Code in a project by including the polylineFunctions.\* files, 
